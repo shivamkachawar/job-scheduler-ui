@@ -77,8 +77,8 @@ The frontend is responsible for presenting job and execution information and sen
 ### 1. Clone the repository
 
 ```bash
-git clone <YOUR-FRONTEND-REPOSITORY-URL>
-cd <YOUR-FRONTEND-REPOSITORY>
+git clone https://github.com/shivamkachawar/job-scheduler-ui
+cd job-scheduler-ui
 ```
 
 Replace the placeholders with the URL and directory name of this frontend repository.
