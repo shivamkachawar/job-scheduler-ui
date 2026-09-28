@@ -1,0 +1,197 @@
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 1000;
+  }
+  
+  .create-job-modal {
+    background: #ffffff;
+    width: 100%;
+    max-width: 600px;
+    max-height: 85vh;
+    overflow-y: auto;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  }
+  
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  
+  .modal-header h2 {
+    margin: 0;
+    color: #111827;
+    font-size: 24px;
+  }
+  
+  .modal-close {
+    border: none;
+    background: transparent;
+    font-size: 30px;
+    color: #6b7280;
+    cursor: pointer;
+    line-height: 1;
+  }
+  
+  .modal-close:hover {
+    color: #111827;
+  }
+  
+  .create-job-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .create-job-form label {
+    display: block;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  
+  .create-job-form input,
+  .create-job-form select {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #111827;
+    font: inherit;
+  }
+  
+  .create-job-form input:focus,
+  .create-job-form select:focus {
+    outline: none;
+    border-color: #6d28d9;
+    box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.12);
+  }
+  
+  .form-field {
+    margin-top: 12px;
+  }
+
+  .form-section {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .form-section h3 {
+    margin: 0 0 16px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+  }
+  
+  .create-job-form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #111827;
+    font: inherit;
+    resize: vertical;
+  }
+  
+  .create-job-form textarea:focus {
+    outline: none;
+    border-color: #6d28d9;
+    box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.12);
+  }
+  .key-value-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+  
+  .add-row-button,
+  .remove-row-button {
+    padding: 9px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #374151;
+    cursor: pointer;
+    font: inherit;
+  }
+  
+  .add-row-button:hover,
+  .remove-row-button:hover {
+    background: #f3f4f6;
+  }
+  
+  @media (max-width: 600px) {
+    .key-value-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .cancel-button,
+.create-job-button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease,
+              transform 0.2s ease;
+}
+
+.cancel-button {
+  background-color: #ffffff;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.cancel-button:hover {
+  background-color: #f3f4f6;
+}
+
+.create-job-button {
+  background-color: #6d28d9;
+  color: #ffffff;
+  border: 1px solid #6d28d9;
+}
+
+.create-job-button:hover {
+  background-color: #5b21b6;
+  border-color: #5b21b6;
+}
+
+.cancel-button:active,
+.create-job-button:active {
+  transform: scale(0.98);
+}
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .cancel-button {
+    background-color: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+  }
+  
+  .cancel-button:hover {
+    background-color: #fee2e2;
+    border-color: #fca5a5;
+  }

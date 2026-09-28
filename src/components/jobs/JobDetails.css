@@ -1,0 +1,78 @@
+.job-details {
+    padding: 20px;
+    margin-bottom: 24px;
+    border: 1px solid #c7d2fe;
+    border-radius: 10px;
+    background-color: #ffffff;
+  }
+  
+  .details-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  
+  .details-header h2 {
+    margin: 0;
+    color: #0f172a;
+  }
+  
+  .close-button {
+    padding: 8px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+  }
+  .execution-history {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  .execution-history h3 {
+    margin: 0 0 16px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+  }
+  
+  .execution-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .execution-row {
+    padding: 16px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+  }
+  
+  .execution-row p {
+    margin: 6px 0;
+    font-size: 14px;
+    color: #4b5563;
+    overflow-wrap: anywhere;
+  }
+  
+  .execution-row strong {
+    color: #111827;
+  }
+  .execution-row {
+    cursor: pointer;
+    transition: background-color 0.2s ease,
+      border-color 0.2s ease;
+  }
+  
+  .execution-row:hover {
+    background: #f3f4f6;
+    border-color: #9ca3af;
+  }
+  
+  .execution-row:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+  }
