@@ -98,7 +98,7 @@ If the API URL is configurable through a Vite environment variable, set it in a 
 Example:
 
 ```env
-VITE_API_BASE_URL=http://localhost:8080
+API_BASE_URL=http://localhost:8080
 ```
 
 Adjust the variable name and URL to match your actual frontend configuration and backend port. Do not commit environment-specific secrets.
