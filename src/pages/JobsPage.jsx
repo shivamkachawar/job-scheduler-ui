@@ -4,7 +4,7 @@ import "./JobsPage.css";
 import PageHeader from "../components/layout/PageHeader";
 import JobsTable from "../components/jobs/JobsTable";
 import useJobs from "../hooks/useJobs";
-import { createJob, pauseJob, resumeJob, deleteJob } from "../services/jobService";
+import { createJob, pauseJob, resumeJob, deleteJob, interpretSchedule } from "../services/jobService";
 import { useNavigate } from "react-router-dom";
 
 function convertIndiaLocalToIso(value) {
@@ -36,6 +36,10 @@ function JobsPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [schedulePrompt, setSchedulePrompt] = useState("");
+  const [isInterpreting, setIsInterpreting] = useState(false);
+  const [interpretError, setInterpretError] = useState("");
+  const [interpretNotice, setInterpretNotice] = useState("");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -74,6 +78,30 @@ function JobsPage() {
     }
   
     return JSON.parse(body);
+  };
+
+  const handleInterpretSchedule = async () => {
+    setIsInterpreting(true);
+    setInterpretError("");
+    setInterpretNotice("");
+    try {
+      const result = await interpretSchedule(schedulePrompt, formData.timezone);
+      setScheduleType(result.scheduleType);
+      setFormData((prev) => ({
+        ...prev,
+        scheduleValue: result.scheduleValue,
+        timezone: result.timezone,
+        httpMethod: result.httpMethod || prev.httpMethod,
+        url: result.url || prev.url,
+        name: prev.name || result.name || "",
+        description: prev.description || result.description || "",
+      }));
+      setInterpretNotice("Schedule filled in below. Review it and complete the job details before creating.");
+    } catch (error) {
+      setInterpretError(error.message);
+    } finally {
+      setIsInterpreting(false);
+    }
   };
 
   const handleCreateJob = async (event) => {
@@ -187,6 +215,23 @@ function JobsPage() {
 
               <form className="create-job-form"
               onSubmit={handleCreateJob}>
+                <div className="form-section ai-schedule-section">
+                  <h3>Describe the schedule</h3>
+                  <p>For example: “Schedule a one-time job on 17 November 2026 at 13:35.” Times use the timezone below.</p>
+                  <textarea
+                    aria-label="Describe the schedule in natural language"
+                    rows="2"
+                    placeholder="Tell us when this job should run..."
+                    value={schedulePrompt}
+                    onChange={(event) => setSchedulePrompt(event.target.value)}
+                  />
+                  <button type="button" className="interpret-schedule-button" onClick={handleInterpretSchedule}
+                    disabled={isInterpreting || !schedulePrompt.trim()}>
+                    {isInterpreting ? "Parsing schedule…" : "Parse schedule locally"}
+                  </button>
+                  {interpretError && <p className="error-message">{interpretError}</p>}
+                  {interpretNotice && <p className="interpret-notice" role="status">{interpretNotice}</p>}
+                </div>
                 {/* Basic Details */}
                 <div className="form-section">
                   <h3>Basic Details</h3>

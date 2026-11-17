@@ -68,6 +68,27 @@ export async function createJob(jobData) {
   
     return response.json();
   }
+
+export async function interpretSchedule(text, timezone) {
+  const response = await fetch(`${API_BASE_URL}/api/jobs/interpret`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text, timezone }),
+  });
+  if (!response.ok) {
+    const message = await response.text();
+    try {
+      const parsed = JSON.parse(message);
+      throw new Error(parsed.detail || parsed.message || parsed.error || parsed.title || "Could not interpret schedule");
+    } catch (error) {
+      if (error instanceof SyntaxError) {
+        throw new Error(message || "Could not interpret schedule");
+      }
+      throw error;
+    }
+  }
+  return response.json();
+}
   export async function pauseJob(jobId) {
     const response = await fetch(
       `${API_BASE_URL}/api/jobs/${jobId}/pause`,
